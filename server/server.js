@@ -12,17 +12,17 @@ import commentRouter from "./routes/commentRoutes.js"
 
 
 const app=express()
-
 app.use(express.json())
 app.use(cors())
 app.use(clerkMiddleware())
 
-app.get("/",(req,res)=>{res.send("<h1>Server is live!!</h1>")})
+app.get("/",(req,res)=>{res.send("Server is live!!")})
 app.use("/api/inngest",serve({client:inngest,functions}))
 app.use("/api/workspaces",requireAuth, workspaceRouter)
 app.use("/api/projects",requireAuth, projectRouter)
 app.use("/api/tasks",requireAuth,taskRouter) 
 app.use("/api/comments",requireAuth,commentRouter)   
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
